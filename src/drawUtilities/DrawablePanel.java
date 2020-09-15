@@ -1,9 +1,14 @@
 package drawUtilities;
 
+import drawUtilities.drawing.LayerGroup;
 import javax.swing.*;
 import java.awt.*;
 
 public class DrawablePanel extends JPanel {
+    private LayerGroup layerGroup;
+    public void setLayerGroup(LayerGroup layerGroup){
+        this.layerGroup = layerGroup;
+    }
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -11,6 +16,8 @@ public class DrawablePanel extends JPanel {
         Graphics2D g2 = (Graphics2D)g;
         RenderingHints rh = new RenderingHints(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2.setRenderingHints(rh);
-        g2.drawOval(10,10,30,30);
+        if (layerGroup != null){
+            layerGroup.actionLayer(g);
+        }
     }
 }
