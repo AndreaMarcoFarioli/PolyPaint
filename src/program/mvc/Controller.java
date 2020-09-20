@@ -1,10 +1,11 @@
 package program.mvc;
 
+import java.awt.*;
 import java.lang.reflect.InvocationTargetException;
 
 public class Controller {
-    private Model model;
-    private View view;
+    private final Model model;
+    private final View view;
 
     public Controller(Model model, View view){
         this.model = model;
@@ -13,12 +14,25 @@ public class Controller {
 
     public void start(){
         try {
-            view.invokeAndWait();
+            this.view.invokeAndWait();
         } catch (InvocationTargetException | InterruptedException e) {
             e.printStackTrace();
         }
-        view.setShowItemsClickEvent((event)->{
 
+        fetchInterface();
+        fetchEvents();
+    }
+
+    public void fetchInterface(){
+        view.setItemPanelVisible(model.isDrawItemsShow());
+    }
+
+    public void fetchEvents(){
+        view.setShowItemsClickEvent((actionEvent)->{
+            model.setDrawItemsShow(!model.isDrawItemsShow());
+            // PROVVISORIO
+            view.setItemPanelVisible(model.isDrawItemsShow());
+            System.out.println(model.isDrawItemsShow());
         });
     }
 }

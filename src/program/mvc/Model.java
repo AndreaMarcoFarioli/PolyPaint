@@ -5,49 +5,49 @@ import drawUtilities.drawing.LayerGroup;
 import javax.swing.event.EventListenerList;
 
 public class Model {
-    private EventListenerList
-            eventListenerList   = new EventListenerList();
-    private String
-            filename;
     private LayerGroup
             layerGroup          = new LayerGroup();
     private int
             mainLayer           = 0;
 
-    private boolean
-            drawItemsShow       = false;
-    private boolean
-            layerFrameShow      = false;
-    private boolean
-            planeFrameShow      = false;
+    private final ModelInterface
+            modelInterface;
+    private ModelProject
+            modelProject;
     private int planeFrameShowIndex;
 
-    public void createProject(){
-
+    public Model(){
+        modelInterface = ModelInterface.getInterface();
+        System.out.println(modelInterface);
     }
 
-    public void addLayerChangedListener(){
-
+    public void setDrawItemsShow(boolean drawItemsShow) {
+        modelInterface.setDrawItemsShow(drawItemsShow);
     }
 
-    public void removeLayerChangedListener(){
-
+    public void setLayerFrameShow(boolean layerFrameShow) {
+        modelInterface.setLayerFrameShow(layerFrameShow);
     }
 
-    public void fireAll(){
-
+    public void setPlaneFrameShow(boolean planeFrameShow) {
+        modelInterface.setPlaneFrameShow(planeFrameShow);
     }
 
-    public void fireLayerChanged(){
-
+    public boolean isLayerFrameShow() {
+        return modelInterface.isLayerFrameShow();
     }
 
-    public void fireStateLayerFrameChanged(){
-
+    public boolean isDrawItemsShow() {
+        return modelInterface.isDrawItemsShow();
     }
 
-    public void fireStatePlaneFrameChanged(){
-        
+    public boolean isPlaneFrameShow() {
+        return modelInterface.isPlaneFrameShow();
     }
+
+    public ModelProject getModelProject() {
+        return modelProject;
+    }
+
 
 }

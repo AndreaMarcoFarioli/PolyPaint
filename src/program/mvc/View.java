@@ -11,23 +11,23 @@ import java.lang.reflect.InvocationTargetException;
 
 public class View {
     private JFrame mainFrame;
-    private DrawablePanel
+    private final DrawablePanel
             drawArea            = new DrawablePanel();
-    private JPanel
+    private final JPanel
             drawItemsPanel      = new JPanel();
 
-    private Dimension
+    private final Dimension
             screenSize          = Toolkit.getDefaultToolkit().getScreenSize();
     private final Dimension
             minDimension        = new Dimension(screenSize.width/2,screenSize.height/2),
             maxDimension        = new Dimension(screenSize.width,screenSize.height);
     //region UpBar
-    private JMenuBar upBar      = new JMenuBar();
-    private JMenu
+    private final JMenuBar upBar      = new JMenuBar();
+    private final JMenu
             uB_fileMenu         = new JMenu("File"),
             uB_prefabsMenu      = new JMenu("Prefabs"),
             uB_viewMenu         = new JMenu("View/Window");
-    private JMenuItem
+    private final JMenuItem
             uB_fM_saveButton    = new JMenuItem("Save"),
             uB_fM_loadButton    = new JMenuItem("Load"),
             uB_pM_rectangle     = new JMenuItem("Rectangle"),

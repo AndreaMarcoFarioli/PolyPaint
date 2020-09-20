@@ -2,27 +2,16 @@ package drawUtilities.brushes;
 
 import java.awt.*;
 
-enum BrushType {
-    Square,
-    Rectangle,
-    Circle,
-    Oval
-}
-
 public abstract class Brush implements IBrush {
     private int brushSize;
     private Color brushColor;
-    private BrushType brushType;
+    private Point position;
 
-    @Override
-    public BrushType getBrushType() {
-        return this.brushType;
+    protected Brush(int brushSize, Color brushColor){
+        this.brushColor = brushColor;
+        this.brushSize = brushSize;
     }
 
-    @Override
-    public void setBrushType(BrushType brushType) {
-        this.brushType = brushType;
-    }
 
     @Override
     public void setBrushColor(Color color) {
@@ -43,4 +32,19 @@ public abstract class Brush implements IBrush {
     public Color getBrushColor() {
         return this.brushColor;
     }
+
+    public void setPosition(Point position) {
+        this.position = position;
+    }
+
+    public Point getPosition() {
+        return position;
+    }
+
+    public void setBrushDynamic(Brush brush){
+        this.brushSize = brush.brushSize;
+        this.brushColor = brush.brushColor;
+    }
+
+    public abstract Brush clone();
 }
