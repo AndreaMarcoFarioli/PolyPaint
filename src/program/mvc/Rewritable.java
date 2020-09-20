@@ -10,7 +10,7 @@ public class Rewritable {
     private final Runnable redoAction;
     private final Runnable undoAction;
 
-    public static void undoRewritable(){
+    public static void undoRewritables(){
         if(rewritables.size() > 0) {
             Rewritable rewritable;
             rewritablesRedo.push(rewritable = rewritables.pop());
